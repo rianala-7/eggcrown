@@ -1,0 +1,1089 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EggCrown · Œufs frais d'Antananarivo</title>
+<link rel="icon" type="image/png" href="eggcrown-logo-new-transparent.png">
+<style>
+  :root {
+    --bg:        #F0EEE9;
+    --bg-warm:   #E8DCC4;
+    --bg-cream:  #FAF6EB;
+    --apricot:   #B5862B;   /* antique gold — echoes the logo */
+    --gold:      #C8941F;   /* brighter honey gold for highlights */
+    --gold-soft: #E8C25A;   /* light gold for gradients */
+    --driftwood: #7C6F5A;
+    --espresso:  #2C2A26;
+    --bark:      #221913;   /* deepened to match the dark hero */
+    --ink-dark:  #14100B;   /* near-black for dark surfaces */
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--espresso);
+    font-family: 'Helvetica Neue', 'Inter', Arial, sans-serif;
+    font-size: 16px; line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'PP Editorial New', 'Recoleta', 'Tiempos Headline',
+                 Georgia, 'Times New Roman', serif;
+    font-weight: 700;
+    color: var(--espresso);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+
+  .eyebrow {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.6em;
+    color: var(--driftwood);
+    margin-bottom: 1.4rem;
+  }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+  /* ===== Header (dark, matches the hero) ==================== */
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(20, 16, 11, 0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(200, 148, 31, 0.25);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 0; gap: 2rem; }
+  .nav .wordmark {
+    font-family: 'PP Editorial New', 'Recoleta', Georgia, serif;
+    font-size: 26px; font-weight: 700; letter-spacing: 1px;
+    text-decoration: none;
+    background: linear-gradient(135deg, var(--gold-soft) 0%, var(--gold) 55%, var(--apricot) 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: var(--gold);
+  }
+  .nav ul { list-style: none; display: flex; gap: 2.5rem; }
+  .nav a {
+    color: rgba(240, 238, 233, 0.85); text-decoration: none;
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    padding-bottom: 4px; border-bottom: 1px solid transparent;
+    transition: border-color .2s, color .2s;
+  }
+  .nav a:hover { border-bottom-color: var(--gold); color: var(--gold-soft); }
+  .lang-switch {
+    display: flex; gap: 0.4rem; align-items: center;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+  }
+  .lang-switch a {
+    color: rgba(240, 238, 233, 0.55); text-decoration: none;
+    padding: 0.2rem 0.3rem; border-bottom: 1px solid transparent;
+  }
+  .lang-switch a.active {
+    color: var(--gold-soft); border-bottom-color: var(--gold);
+  }
+  .lang-switch span { color: rgba(240, 238, 233, 0.3); }
+
+  /* ===== Hero =============================================== */
+  .hero { padding: 6rem 0 8rem; text-align: center; }
+  .hero h1 {
+    font-size: clamp(3.2rem, 7vw, 5.8rem);
+    margin: 1.5rem 0 1.2rem;
+  }
+  .hero h1 .accent { color: var(--apricot); font-style: italic; }
+  .hero p.lede {
+    max-width: 56ch; margin: 0 auto 2.5rem;
+    font-size: 1.15rem; color: var(--driftwood);
+  }
+
+  /* Dark hero with the gold logo as centerpiece */
+  .hero-dark {
+    background: radial-gradient(circle at 50% 38%, #241B12 0%, #14100B 70%);
+    padding: 4.5rem 0 6rem;
+  }
+  .hero-logo {
+    display: block;
+    width: 460px; max-width: 82vw;
+    margin: 0 auto 1.5rem;
+  }
+  .hero-dark p.lede { color: rgba(240, 238, 233, 0.72); }
+  .btn-gold {
+    background: linear-gradient(135deg, #E8C25A 0%, #C8941F 55%, #A87C2D 100%);
+    color: #1A130A;
+  }
+  .btn-gold:hover { filter: brightness(1.08); transform: translateY(-2px); }
+  .ghost-light {
+    background: transparent; color: #F0EEE9;
+    border: 1px solid rgba(240, 238, 233, 0.45); margin-left: 0.6rem;
+  }
+  .ghost-light:hover {
+    background: rgba(240, 238, 233, 0.08);
+    border-color: #C8941F; color: #E8C25A;
+  }
+
+  .btn {
+    display: inline-block; padding: 1rem 2.4rem;
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    text-decoration: none;
+    color: #1A130A;
+    background: linear-gradient(135deg, var(--gold-soft) 0%, var(--gold) 55%, var(--apricot) 100%);
+    border-radius: 999px;
+    transition: transform .15s, filter .2s;
+  }
+  .btn:hover { filter: brightness(1.07); transform: translateY(-2px); }
+  .btn.ghost {
+    background: transparent; color: var(--espresso);
+    border: 1px solid var(--espresso); margin-left: 0.6rem;
+  }
+  .btn.ghost:hover { background: var(--espresso); color: var(--bg); }
+
+  .ornament-rule {
+    display: flex; align-items: center; justify-content: center;
+    gap: 0.5rem; margin: 4rem auto 1rem; color: var(--apricot);
+  }
+  .ornament-rule::before, .ornament-rule::after {
+    content: ''; width: 90px; height: 1px; background: currentColor;
+  }
+  .ornament-rule .dot {
+    width: 6px; height: 6px;
+    background: currentColor; transform: rotate(45deg);
+  }
+
+  /* ===== Section base ====================================== */
+  section { padding: 6rem 0; }
+  section.alt { background: var(--bg-cream); }
+  .section-head { text-align: center; margin-bottom: 4rem; }
+  .section-head h2 {
+    font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+    margin-bottom: 1rem;
+  }
+  .section-head p {
+    color: var(--driftwood); font-size: 1.05rem;
+    max-width: 64ch; margin: 0 auto;
+  }
+
+  /* ===== Three values ====================================== */
+  .values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+  .value { text-align: center; padding: 2rem 1rem; }
+  .value .num {
+    font-family: 'PP Editorial New', Georgia, serif;
+    font-style: italic; color: var(--apricot);
+    font-size: 1.4rem; margin-bottom: 0.8rem;
+  }
+  .value h3 { font-size: 1.6rem; margin-bottom: 0.8rem; }
+  .value p { color: var(--driftwood); }
+  @media (max-width: 800px) { .values { grid-template-columns: 1fr; } }
+
+  /* ===== Availability banner =============================== */
+  .availability-banner {
+    display: flex; align-items: center; justify-content: center;
+    gap: 0.8rem; max-width: 720px; margin: 0 auto 3rem;
+    padding: 1rem 1.6rem; background: var(--bg-warm);
+    border: 1px solid rgba(201, 167, 136, 0.45);
+    border-radius: 999px; font-size: 0.95rem; color: var(--bark);
+    text-align: center;
+  }
+  .availability-banner .dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: #6B7E48; box-shadow: 0 0 0 4px rgba(107, 126, 72, 0.18);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(107, 126, 72, 0.18); }
+    50%      { box-shadow: 0 0 0 9px rgba(107, 126, 72, 0.05); }
+  }
+  .availability-banner strong { color: var(--espresso); font-weight: 700; }
+
+  /* ===== Product cards ===================================== */
+  .products { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .product {
+    background: var(--bg);
+    border: 1px solid rgba(124, 111, 90, 0.20);
+    border-radius: 4px;
+    overflow: hidden;
+    text-align: center;
+    transition: transform .2s, box-shadow .2s, border-color .2s;
+    display: flex; flex-direction: column;
+  }
+  .product:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(58, 35, 16, 0.10);
+    border-color: var(--apricot);
+  }
+  .product-photo {
+    aspect-ratio: 1;
+    background: var(--bg-cream);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    border-bottom: 1px solid rgba(124, 111, 90, 0.14);
+  }
+  .product-photo img {
+    width: 100%; height: 100%; object-fit: cover;
+    display: block; transition: transform .35s ease;
+  }
+  .product:hover .product-photo img { transform: scale(1.04); }
+
+  /* Hero portrait */
+  .hero-portrait { margin: 0 auto 2.4rem; }
+  .hero-portrait img {
+    width: 180px; height: 180px; border-radius: 50%;
+    object-fit: cover; display: block; margin: 0 auto;
+    box-shadow: 0 18px 40px rgba(58, 35, 16, 0.18);
+    border: 4px solid var(--bg);
+  }
+
+  /* Story photo */
+  .story .crest img {
+    width: 100%; max-width: 460px; aspect-ratio: 1;
+    object-fit: cover; border-radius: 4px;
+    box-shadow: 0 18px 50px rgba(58, 35, 16, 0.14);
+  }
+  .product .stock-pill {
+    display: inline-block;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    padding: 0.3rem 0.8rem; border-radius: 999px;
+    background: rgba(107, 126, 72, 0.14);
+    color: #54683A;
+    margin: 1.4rem auto 0;
+  }
+  .product .stock-pill:not(:empty)[data-state]:where([data-state="reservation"]),
+  .product .stock-pill.is-reservation {
+    background: rgba(201, 167, 136, 0.20);
+    color: var(--bark);
+  }
+  .product-body { padding: 0 2rem 2.5rem; }
+  .product h3 { font-size: 1.5rem; margin: 1rem 0 0.5rem; }
+  .product .desc { color: var(--driftwood); font-size: 0.95rem; margin-bottom: 1.4rem; min-height: 3em; }
+  .product .price {
+    font-family: 'PP Editorial New', Georgia, serif;
+    font-size: 1.6rem; font-weight: 700;
+    color: var(--espresso); margin-bottom: 1rem;
+  }
+  .product .price .unit {
+    font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.12em; color: var(--driftwood);
+    margin-left: 0.4rem; text-transform: uppercase;
+  }
+  .product .add {
+    display: inline-block; padding: 0.7rem 1.6rem;
+    background: transparent; border: 1px solid var(--espresso);
+    color: var(--espresso); font-size: 12px; font-weight: 600;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    text-decoration: none; border-radius: 999px; cursor: pointer;
+  }
+  .product .add:hover { background: var(--espresso); color: var(--bg); }
+  .bulk-note {
+    text-align: center; margin-top: 3rem;
+    font-style: italic; color: var(--driftwood);
+    font-size: 0.95rem;
+  }
+  .bulk-note strong { color: var(--espresso); font-style: normal; font-weight: 700; }
+  @media (max-width: 800px) { .products { grid-template-columns: 1fr; } }
+
+  /* ===== Channels (Où nous trouver) ======================== */
+  .channels-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .channel-card {
+    background: var(--bg);
+    border: 1px solid rgba(124, 111, 90, 0.18);
+    border-radius: 4px;
+    padding: 2rem;
+    position: relative;
+    transition: transform .2s, box-shadow .2s, border-color .2s;
+  }
+  .channel-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px rgba(58, 35, 16, 0.08);
+    border-color: var(--apricot);
+  }
+  .channel-num {
+    position: absolute;
+    top: 1.5rem; right: 1.6rem;
+    font-family: 'PP Editorial New', Georgia, serif;
+    font-style: italic;
+    font-size: 1.7rem;
+    color: var(--apricot);
+    opacity: 0.55;
+  }
+  .channel-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.6rem;
+    margin-right: 2.5rem;
+  }
+  .channel-card p {
+    color: var(--driftwood);
+    font-size: 0.95rem;
+    margin-bottom: 0.6rem;
+  }
+  .channel-card .pending {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-style: italic;
+    color: var(--apricot);
+    padding: 0.18rem 0.55rem;
+    background: rgba(201, 167, 136, 0.13);
+    border-radius: 3px;
+  }
+  .channel-card a {
+    color: var(--apricot);
+    text-decoration: underline;
+  }
+  @media (max-width: 800px) { .channels-grid { grid-template-columns: 1fr; } }
+
+  /* ===== Story ============================================= */
+  .story { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .story .crest img { width: 100%; max-width: 460px; }
+  .story h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1.5rem; }
+  .story .quote {
+    font-family: 'PP Editorial New', Georgia, serif;
+    font-style: italic; font-size: 1.3rem;
+    color: var(--apricot); margin: 2rem 0;
+    padding-left: 1.5rem; border-left: 2px solid var(--apricot);
+  }
+  .story p { color: var(--driftwood); margin-bottom: 1.2rem; }
+  .story .team {
+    margin-top: 2rem; padding-top: 1.5rem;
+    border-top: 1px solid rgba(124, 111, 90, 0.20);
+    font-size: 0.95rem;
+  }
+  .story .team strong { color: var(--espresso); }
+  @media (max-width: 800px) { .story { grid-template-columns: 1fr; } }
+
+  /* ===== Contact (was newsletter) =========================== */
+  .contact-block {
+    text-align: center; background: var(--espresso);
+    color: var(--bg); padding: 6rem 0;
+  }
+  .contact-block h2 {
+    color: var(--bg);
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 1rem;
+  }
+  .contact-block p.lede {
+    max-width: 60ch; margin: 0 auto 3rem;
+    color: rgba(240, 238, 233, 0.70);
+  }
+  .contact-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem; max-width: 800px; margin: 0 auto;
+  }
+  .contact-item {
+    display: flex; flex-direction: column; gap: 0.4rem;
+    padding: 1.8rem; border: 1px solid rgba(240, 238, 233, 0.25);
+    border-radius: 4px; text-decoration: none; color: var(--bg);
+    transition: border-color .2s, transform .15s;
+  }
+  .contact-item:hover {
+    border-color: var(--apricot); transform: translateY(-2px);
+  }
+  .contact-item .label {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--apricot);
+  }
+  .contact-item .value-line { font-size: 1.05rem; }
+  @media (max-width: 800px) { .contact-grid { grid-template-columns: 1fr; } }
+
+  /* ===== Footer ============================================ */
+  footer {
+    background: var(--bark);
+    color: rgba(240, 238, 233, 0.65);
+    padding: 4rem 0 2rem; font-size: 14px;
+  }
+  footer .grid {
+    display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 3rem; margin-bottom: 3rem;
+  }
+  footer h4 {
+    color: var(--bg); font-size: 12px; font-weight: 600;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+  }
+  footer ul { list-style: none; }
+  footer ul li { margin-bottom: 0.5rem; }
+  footer a {
+    color: rgba(240, 238, 233, 0.65); text-decoration: none;
+    transition: color .15s;
+  }
+  footer a:hover { color: var(--apricot); }
+  footer .brand img { width: 150px; height: auto; margin-bottom: 1rem; }
+  footer .brand p { font-style: italic; color: rgba(240, 238, 233, 0.55); }
+  footer .social-icons { display: flex; gap: 0.7rem; margin-top: 1.2rem; }
+  footer .social-icons a {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 38px; height: 38px;
+    border: 1px solid rgba(240, 238, 233, 0.28);
+    border-radius: 50%;
+    color: rgba(240, 238, 233, 0.85);
+    transition: border-color .2s, background .2s, color .2s;
+  }
+  footer .social-icons a:hover {
+    border-color: var(--apricot);
+    background: rgba(201, 167, 136, 0.12);
+    color: var(--apricot);
+  }
+  footer .social-icons svg { width: 16px; height: 16px; fill: currentColor; }
+  footer .contact-list li { display: flex; align-items: center; gap: 0.5rem; }
+  footer .contact-list svg {
+    width: 13px; height: 13px; flex-shrink: 0;
+    fill: rgba(240, 238, 233, 0.55);
+  }
+  footer .legal {
+    border-top: 1px solid rgba(240, 238, 233, 0.12);
+    padding-top: 2rem;
+    display: flex; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem; font-size: 12px;
+  }
+  @media (max-width: 800px) {
+    footer .grid { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  /* ===== How to order (steps) ============================== */
+  .steps {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+    counter-reset: step;
+  }
+  .step { text-align: center; position: relative; padding: 1rem; }
+  .step .step-num {
+    width: 56px; height: 56px; margin: 0 auto 1.2rem;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    border: 1.5px solid var(--gold);
+    font-family: 'PP Editorial New', Georgia, serif;
+    font-size: 1.5rem; color: var(--gold);
+  }
+  .step h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+  .step p { color: var(--driftwood); font-size: 0.92rem; }
+  @media (max-width: 800px) { .steps { grid-template-columns: 1fr 1fr; } }
+
+  /* ===== Trust band (paiement / fraîcheur / livraison) ===== */
+  .trust-band {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+    background: var(--bg-cream);
+    border: 1px solid rgba(181, 134, 43, 0.30);
+    border-radius: 8px; padding: 2.5rem 2rem;
+  }
+  .trust { text-align: center; }
+  .trust .trust-icon {
+    margin-bottom: 1rem; color: var(--gold);
+    display: flex; justify-content: center;
+  }
+  .trust .trust-icon svg { width: 44px; height: 44px; }
+  .trust h3 { font-size: 1.15rem; margin-bottom: 0.4rem; }
+  .trust p { color: var(--driftwood); font-size: 0.9rem; }
+  @media (max-width: 800px) { .trust-band { grid-template-columns: 1fr; gap: 1.5rem; } }
+
+  /* ===== Subscription banner =============================== */
+  .subscribe {
+    background: radial-gradient(circle at 50% 30%, #241B12 0%, #14100B 75%);
+    color: #F0EEE9; border-radius: 10px;
+    padding: 4rem 2rem; text-align: center;
+    border: 1px solid rgba(200, 148, 31, 0.35);
+  }
+  .subscribe .eyebrow { color: var(--gold-soft); }
+  .subscribe h2 { color: #F0EEE9; font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 1rem; }
+  .subscribe p { color: rgba(240, 238, 233, 0.72); max-width: 56ch; margin: 0 auto 2rem; }
+
+  /* ===== Delivery zone ===================================== */
+  .zone-grid {
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; align-items: center;
+  }
+  .zone-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .zone-list span {
+    font-size: 0.82rem; padding: 0.35rem 0.85rem;
+    background: var(--bg-cream); border: 1px solid rgba(181, 134, 43, 0.30);
+    border-radius: 999px; color: var(--driftwood);
+  }
+  .zone-note {
+    background: var(--bg-cream); border-left: 3px solid var(--gold);
+    padding: 1.5rem; border-radius: 4px;
+  }
+  .zone-note strong { color: var(--espresso); }
+  @media (max-width: 800px) { .zone-grid { grid-template-columns: 1fr; gap: 2rem; } }
+
+  /* ===== FAQ =============================================== */
+  .faq { max-width: 760px; margin: 0 auto; }
+  .faq details {
+    border-bottom: 1px solid rgba(124, 111, 90, 0.20);
+    padding: 1.3rem 0;
+  }
+  .faq summary {
+    cursor: pointer; list-style: none;
+    font-family: 'PP Editorial New', 'Recoleta', Georgia, serif;
+    font-size: 1.2rem; font-weight: 700; color: var(--espresso);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after {
+    content: '+'; color: var(--gold); font-size: 1.6rem;
+    transition: transform .2s;
+  }
+  .faq details[open] summary::after { transform: rotate(45deg); }
+  .faq details p { color: var(--driftwood); margin-top: 0.9rem; font-size: 0.98rem; }
+
+  /* ===== Floating WhatsApp button ========================== */
+  .wa-float {
+    position: fixed; bottom: 24px; right: 24px; z-index: 50;
+    display: flex; align-items: center; gap: 0.6rem;
+    background: #25D366; color: #fff;
+    padding: 0.85rem 1.3rem; border-radius: 999px;
+    text-decoration: none; font-weight: 600; font-size: 14px;
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.40);
+    transition: transform .15s, box-shadow .2s;
+  }
+  .wa-float:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5); }
+  .wa-float svg { width: 22px; height: 22px; fill: #fff; }
+  .wa-float .wa-text { white-space: nowrap; }
+  @media (max-width: 600px) {
+    .wa-float { padding: 0.85rem; }
+    .wa-float .wa-text { display: none; }
+  }
+
+  /* ===== Customer reviews ================================== */
+  .reviews-note {
+    text-align: center; max-width: 640px; margin: -1.5rem auto 3rem;
+    font-size: 0.9rem; font-style: italic; color: var(--driftwood);
+    background: rgba(181, 134, 43, 0.10);
+    border: 1px dashed rgba(181, 134, 43, 0.45);
+    border-radius: 6px; padding: 0.9rem 1.4rem;
+  }
+  .reviews-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+  }
+  .review {
+    position: relative;
+    background: var(--bg); border: 1px solid rgba(124, 111, 90, 0.20);
+    border-radius: 8px; padding: 2rem;
+  }
+  .review .stars { color: var(--gold); font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 1rem; }
+  .review .quote {
+    font-family: 'PP Editorial New', 'Recoleta', Georgia, serif;
+    font-size: 1.05rem; font-style: italic; color: var(--espresso);
+    line-height: 1.5; margin-bottom: 1.4rem;
+  }
+  .review .author { font-size: 0.85rem; font-weight: 600; color: var(--driftwood); letter-spacing: 0.05em; }
+  .review .pending {
+    position: absolute; top: 1rem; right: 1rem;
+    font-size: 0.66rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--bark); background: rgba(181, 134, 43, 0.22);
+    padding: 0.2rem 0.55rem; border-radius: 3px;
+  }
+  @media (max-width: 800px) { .reviews-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#" class="wordmark">EggCrown</a>
+    <ul>
+      <li><a href="#eggs">Nos œufs</a></li>
+      <li><a href="#order">Commander</a></li>
+      <li><a href="#where">Livraison</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="lang-switch">
+      <a href="#" class="active">FR</a><span>·</span>
+      <a href="#">MG</a><span>·</span>
+      <a href="#">EN</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero hero-dark">
+  <div class="container">
+    <img class="hero-logo"
+         src="eggcrown-logo-new-transparent.png"
+         alt="EggCrown — The Crown of Freshness" loading="eager">
+    <p class="lede">
+      Petite ferme à Antananarivo. Dix poules, des œufs frais à commander
+      en ligne, à retirer sur les marchés ou à se faire livrer.
+    </p>
+    <a href="https://wa.me/261383792542?text=Bonjour%20EggCrown%2C%20je%20souhaite%20commander%20des%20%C5%93ufs." target="_blank" rel="noopener" class="btn btn-gold">Commander</a>
+    <a href="#story" class="btn ghost-light">Notre histoire</a>
+  </div>
+</section>
+
+<section class="alt" id="values">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Trois engagements</p>
+      <h2>Frais, locaux, accessibles.</h2>
+      <p>Lancé le 12 mai 2026, EggCrown est une petite ferme familiale.
+         Pas d'industrie, pas d'intermédiaire — nous savons d'où vient
+         chaque œuf.</p>
+    </div>
+    <div class="values">
+      <div class="value">
+        <p class="num">i.</p>
+        <h3>Petite échelle</h3>
+        <p>Dix poules sur dix mètres carrés, à Antananarivo. Une équipe
+           de quatre — pas d'industrie, pas d'intermédiaire.</p>
+      </div>
+      <div class="value">
+        <p class="num">ii.</p>
+        <h3>Production limitée</h3>
+        <p>Sept à huit œufs sortent du nid chaque jour, une cinquantaine
+           par semaine — ni plus, ni moins. Réservez votre carton pour ne
+           pas en manquer.</p>
+      </div>
+      <div class="value">
+        <p class="num">iii.</p>
+        <h3>Quatre canaux</h3>
+        <p>Marchés, magasins, livraison directe, commande en ligne.
+           Vous choisissez le canal qui vous convient.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="eggs">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Trois quantités</p>
+      <h2>Nos œufs</h2>
+      <p>Un seul œuf, un seul goût. Choisissez la quantité — le prix
+         suit, à <strong>550 Ar l'œuf</strong>. À partir de 60 œufs :
+         remise de <strong>−5 %</strong>.</p>
+    </div>
+
+    <div class="availability-banner">
+      <span class="dot"></span>
+      <span>Disponible cette semaine — <strong>environ 50 œufs</strong>. Réservation conseillée.</span>
+    </div>
+
+    <div class="products">
+      <div class="product">
+        <div class="product-photo">
+          <img src="https://images.unsplash.com/photo-1585355611468-3c418173f128?w=600&h=600&fit=crop&q=80"
+               alt="Œuf brun de la ferme" loading="lazy">
+        </div>
+        <span class="stock-pill">Disponible</span>
+        <div class="product-body">
+          <h3>Le carton de 6</h3>
+          <p class="desc">Six œufs frais du jour. Pour un foyer, le temps d'une semaine.</p>
+          <p class="price">3 300 Ar<span class="unit">6 œufs</span></p>
+          <a href="https://wa.me/261383792542?text=Bonjour%20EggCrown%2C%20je%20voudrais%20commander%201%20carton%20de%206%20%C5%93ufs%20%283%20300%20Ar%29." target="_blank" rel="noopener" class="add">Ajouter</a>
+        </div>
+      </div>
+      <div class="product">
+        <div class="product-photo">
+          <img src="https://images.unsplash.com/photo-1518569656558-1f25e69d93d7?w=600&h=600&fit=crop&q=80"
+               alt="Douzaine d'œufs sur plateau" loading="lazy">
+        </div>
+        <span class="stock-pill">Disponible</span>
+        <div class="product-body">
+          <h3>Le carton de 12</h3>
+          <p class="desc">Une douzaine. Notre format le plus demandé.</p>
+          <p class="price">6 600 Ar<span class="unit">12 œufs</span></p>
+          <a href="https://wa.me/261383792542?text=Bonjour%20EggCrown%2C%20je%20voudrais%20commander%201%20carton%20de%2012%20%C5%93ufs%20%286%20600%20Ar%29." target="_blank" rel="noopener" class="add">Ajouter</a>
+        </div>
+      </div>
+      <div class="product">
+        <div class="product-photo">
+          <img src="https://images.unsplash.com/photo-1664339307400-9c22e5f44496?w=600&h=600&fit=crop&q=80"
+               alt="Panier d'œufs fermiers" loading="lazy">
+        </div>
+        <span class="stock-pill is-reservation">Sur réservation</span>
+        <div class="product-body">
+          <h3>Le plateau de 30</h3>
+          <p class="desc">Un plateau entier. Pour les familles, restaurants et pâtissiers.</p>
+          <p class="price">16 500 Ar<span class="unit">30 œufs</span></p>
+          <a href="https://wa.me/261383792542?text=Bonjour%20EggCrown%2C%20je%20voudrais%20commander%201%20plateau%20de%2030%20%C5%93ufs%20%2816%20500%20Ar%29." target="_blank" rel="noopener" class="add">Ajouter</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="bulk-note">
+      Commande de <strong>60 œufs ou plus</strong> : remise automatique de
+      <strong>−5 %</strong>. Contactez-nous pour les commandes en gros.
+    </p>
+  </div>
+</section>
+
+<section class="alt" id="order">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Simple et rapide</p>
+      <h2>Comment commander</h2>
+      <p>Pas de panier compliqué. Vous nous écrivez, on prépare, on livre.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Choisissez</h3>
+        <p>Carton de 6, de 12 ou plateau de 30. À 550 Ar l'œuf.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Écrivez-nous</h3>
+        <p>Par WhatsApp, téléphone ou email. On confirme votre commande
+           et le créneau.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>On ramasse</h3>
+        <p>Vos œufs sont ramassés le matin même, frais du nid.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Livraison ou retrait</h3>
+        <p>Livré chez vous dans la journée, ou retiré sur un marché.
+           Paiement MVola ou espèces.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="container">
+    <div class="trust-band">
+      <div class="trust">
+        <div class="trust-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="6" y1="37" x2="42" y2="37"/>
+            <path d="M14 37a10 10 0 0 1 20 0"/>
+            <line x1="24" y1="9" x2="24" y2="15"/>
+            <line x1="11" y1="15" x2="15" y2="19"/>
+            <line x1="37" y1="15" x2="33" y2="19"/>
+            <line x1="6" y1="27" x2="11" y2="27"/>
+            <line x1="37" y1="27" x2="42" y2="27"/>
+          </svg>
+        </div>
+        <h3>Pondu le matin, livré dans la journée</h3>
+        <p>Aucun stock dormant. L'œuf que vous recevez a été pondu le jour même.</p>
+      </div>
+      <div class="trust">
+        <div class="trust-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="14" y="6" width="20" height="36" rx="3"/>
+            <line x1="20" y1="37" x2="28" y2="37"/>
+            <circle cx="24" cy="20" r="5.5"/>
+            <line x1="24" y1="16.5" x2="24" y2="23.5"/>
+          </svg>
+        </div>
+        <h3>Paiement MVola</h3>
+        <p>Réglez simplement par Mobile Money MVola, ou en espèces à la livraison.</p>
+      </div>
+      <div class="trust">
+        <div class="trust-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M24 7c-6.6 0-12 5-12 11.6 0 8.4 12 22.4 12 22.4s12-14 12-22.4C36 12 30.6 7 24 7z"/>
+            <circle cx="24" cy="18.5" r="4.2"/>
+          </svg>
+        </div>
+        <h3>Livraison dans tout Antananarivo</h3>
+        <p>Livraison à domicile partout dans Tana, à l'horaire convenu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="where">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Où nous trouver</p>
+      <h2>Quatre manières de récupérer vos œufs.</h2>
+      <p>Présents à Antananarivo en plusieurs canaux. Pour les points
+         de retrait exacts, les horaires de marché et les zones de
+         livraison, contactez-nous — nous répondons rapidement.</p>
+    </div>
+    <div class="channels-grid">
+      <div class="channel-card">
+        <span class="channel-num">01</span>
+        <h3>Sur les marchés</h3>
+        <p>Présents sur les marchés d'Antananarivo, à la rencontre directe
+           des familles.</p>
+        <span class="pending">marchés &amp; horaires à confirmer</span>
+      </div>
+      <div class="channel-card">
+        <span class="channel-num">02</span>
+        <h3>En magasin</h3>
+        <p>Disponibles chez des partenaires locaux pour un dépannage rapide
+           près de chez vous.</p>
+        <span class="pending">points de vente à confirmer</span>
+      </div>
+      <div class="channel-card">
+        <span class="channel-num">03</span>
+        <h3>Livraison directe</h3>
+        <p>Livraison à domicile dans tout Antananarivo, le jour même de la
+           ponte, à l'horaire convenu.</p>
+        <span class="pending">tarif de livraison à confirmer</span>
+      </div>
+      <div class="channel-card">
+        <span class="channel-num">04</span>
+        <h3>Commande en ligne</h3>
+        <p>Réservez ici, dans la section
+           <a href="#eggs">Nos œufs</a>. Confirmation par WhatsApp ou
+           téléphone, puis livraison ou retrait.</p>
+      </div>
+    </div>
+
+    <div class="zone-grid" style="margin-top:4rem;">
+      <div>
+        <p class="eyebrow">Zone de livraison</p>
+        <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:1.2rem;">
+          Partout dans Tana.</h2>
+        <p style="color:var(--driftwood);margin-bottom:1.5rem;">
+          Nous livrons à domicile dans tout Antananarivo et sa proche
+          banlieue. Quelques quartiers desservis :</p>
+        <div class="zone-list">
+          <span>Analakely</span><span>Ankorondrano</span><span>Ivandry</span>
+          <span>Andravoahangy</span><span>Behoririka</span><span>Tsiadana</span>
+          <span>Isoraka</span><span>Faravohitra</span><span>Antanimena</span>
+          <span>Ambanidia</span><span>Mahamasina</span><span>67 Ha</span>
+          <span>Ambohimanarina</span><span>Anosy</span><span>… et plus</span>
+        </div>
+      </div>
+      <div class="zone-note">
+        <p style="margin-bottom:0.8rem;"><strong>Pondu le matin, livré dans la journée.</strong></p>
+        <p style="color:var(--driftwood);font-size:0.95rem;">
+          Commandez avant midi et soyez livré l'après-midi même, selon votre
+          quartier. Votre quartier n'est pas listé ? Écrivez-nous sur
+          WhatsApp, on s'arrange.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="subscribe">
+  <div class="container">
+    <div class="subscribe">
+      <p class="eyebrow">Nouveau</p>
+      <h2>Vos œufs frais, chaque semaine.</h2>
+      <p>Ne pensez plus à commander. Recevez votre carton de 6, 12 ou votre
+         plateau de 30 livré automatiquement chaque semaine — même prix,
+         priorité sur notre production limitée, annulable quand vous voulez.</p>
+      <a href="https://wa.me/261383792542?text=Bonjour%20EggCrown%2C%20je%20souhaite%20d%C3%A9marrer%20un%20abonnement%20hebdomadaire." target="_blank" rel="noopener" class="btn">Démarrer mon abonnement</a>
+    </div>
+  </div>
+</section>
+
+<section id="story">
+  <div class="container">
+    <div class="story">
+      <div class="crest">
+        <img src="https://images.unsplash.com/photo-1698494496967-d5754b2d9d26?w=900&h=900&fit=crop&q=80"
+             alt="Une de nos poules pondeuses rousses dans l'herbe" loading="lazy">
+      </div>
+      <div>
+        <p class="eyebrow">Notre histoire</p>
+        <h2>Une idée simple : des œufs sains, accessibles.</h2>
+        <p>
+          Tout a commencé avec une idée simple : produire des œufs frais,
+          locaux et de qualité, tout en créant une activité durable et
+          utile pour la communauté.
+        </p>
+        <p>
+          Dans un monde où il devient de plus en plus difficile de trouver
+          des produits alimentaires fiables et naturels, nous avons décidé
+          de lancer un projet d'élevage de poules pondeuses avec une vision
+          claire : offrir des œufs sains issus d'un élevage sérieux,
+          respectueux des animaux et accessible à tous.
+        </p>
+        <p class="quote">
+          « Frais, locaux, sérieux. »
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Avis clients</p>
+      <h2>Ils nous font confiance.</h2>
+    </div>
+    <p class="reviews-note">
+      Section en préparation — ces avis sont des exemples. Aucun ne sera
+      publié avant validation par EggCrown. Vos premiers vrais avis
+      apparaîtront ici dès vos premières livraisons.
+    </p>
+    <div class="reviews-grid">
+      <div class="review">
+        <span class="pending">À valider</span>
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="quote">« [Exemple] Des œufs vraiment frais, livrés le jour
+           même. On sent la différence au goût. »</p>
+        <p class="author">— Prénom N., quartier (exemple)</p>
+      </div>
+      <div class="review">
+        <span class="pending">À valider</span>
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="quote">« [Exemple] Commande simple par WhatsApp, paiement
+           MVola, livraison rapide. Je recommande. »</p>
+        <p class="author">— Prénom N., quartier (exemple)</p>
+      </div>
+      <div class="review">
+        <span class="pending">À valider</span>
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="quote">« [Exemple] Petite ferme sérieuse, des œufs de
+           qualité à prix juste. Mes enfants adorent. »</p>
+        <p class="author">— Prénom N., quartier (exemple)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="faq">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Questions fréquentes</p>
+      <h2>Tout ce qu'on nous demande.</h2>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>Vos œufs sont-ils vraiment frais ?</summary>
+        <p>Oui. Nos œufs sont ramassés le matin même et livrés dans la
+           journée. Pas de stockage prolongé : l'œuf que vous recevez a
+           été pondu le jour de votre livraison.</p>
+      </details>
+      <details>
+        <summary>Comment conserver mes œufs ?</summary>
+        <p>Conservez-les dans un endroit frais, à l'abri du soleil. Au
+           réfrigérateur, ils se gardent plusieurs semaines. Posés pointe
+           vers le bas, ils restent frais plus longtemps. Inutile de les
+           laver avant conservation.</p>
+      </details>
+      <details>
+        <summary>Comment passer commande ?</summary>
+        <p>Le plus simple : écrivez-nous sur WhatsApp ou appelez-nous.
+           Indiquez la quantité (carton de 6, 12 ou plateau de 30) et
+           votre quartier. On confirme le créneau et c'est réglé.</p>
+      </details>
+      <details>
+        <summary>Comment puis-je payer ?</summary>
+        <p>Par <strong>MVola</strong> (Mobile Money) au moment de la
+           commande, ou en <strong>espèces à la livraison</strong>.</p>
+      </details>
+      <details>
+        <summary>Quels sont les délais de livraison ?</summary>
+        <p>Nous livrons à domicile dans tout Antananarivo, le jour même de
+           la ponte. Commandez avant midi pour une livraison
+           l'après-midi, selon votre quartier.</p>
+      </details>
+      <details>
+        <summary>Y a-t-il une quantité minimum ?</summary>
+        <p>Le plus petit format est le carton de 6 œufs (3 300 Ar). À
+           partir de 60 œufs, vous bénéficiez d'une remise de 5 %.</p>
+      </details>
+      <details>
+        <summary>Vos poules, comment sont-elles élevées ?</summary>
+        <p>Nous élevons 10 poules à petite échelle à Antananarivo,
+           nourries aux provendes. Une production limitée — environ 50
+           œufs par semaine — qui garantit la fraîcheur et le suivi de
+           chaque œuf.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="contact-block" id="contact">
+  <div class="container">
+    <p class="eyebrow" style="color: var(--apricot);">Nous contacter</p>
+    <h2>Une question, une commande ?</h2>
+    <p class="lede">
+      Pour commander en gros, prendre rendez-vous, ou simplement nous écrire —
+      <strong>RIANALA</strong> répond à tous les messages.
+    </p>
+    <div class="contact-grid">
+      <a href="tel:+261342823485" class="contact-item">
+        <span class="label">Téléphone</span>
+        <span class="value-line">034 28 234 85</span>
+      </a>
+      <a href="mailto:rianalanathan@gmail.com" class="contact-item">
+        <span class="label">Email</span>
+        <span class="value-line">rianalanathan@gmail.com</span>
+      </a>
+      <a href="#" class="contact-item">
+        <span class="label">Facebook</span>
+        <span class="value-line">Nathan Rianala</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="grid">
+      <div class="brand">
+        <img src="eggcrown-logo-new-transparent.png" alt="EggCrown">
+        <p>Frais, locaux, sérieux.<br>
+           Antananarivo · depuis le 12 mai 2026.</p>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+          </a>
+          <a href="tel:+261342823485" aria-label="Téléphone">
+            <svg viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+          </a>
+          <a href="mailto:rianalanathan@gmail.com" aria-label="Email">
+            <svg viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4>Nos œufs</h4>
+        <ul>
+          <li><a href="#eggs">Carton de 6</a></li>
+          <li><a href="#eggs">Carton de 12</a></li>
+          <li><a href="#eggs">Plateau de 30</a></li>
+          <li><a href="#contact">Commandes en gros (−5 %)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>EggCrown</h4>
+        <ul>
+          <li><a href="#story">Notre histoire</a></li>
+          <li><a href="#values">Engagements</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Joindre RIANALA</h4>
+        <ul class="contact-list">
+          <li>
+            <svg viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+            <a href="tel:+261342823485">034 28 234 85</a>
+          </li>
+          <li>
+            <svg viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+            <a href="mailto:rianalanathan@gmail.com">rianalanathan@gmail.com</a>
+          </li>
+          <li>
+            <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+            <span>Antananarivo, Madagascar</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+            <a href="#">Facebook · Nathan Rianala</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2026 EggCrown · Tous droits réservés</span>
+      <span>FR · MG · EN</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/261383792542" target="_blank" rel="noopener"
+   aria-label="Commander sur WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm0 18.15h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 01-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 012.41 5.83c0 4.54-3.7 8.24-8.25 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01-.16 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
+  <span class="wa-text">Commander sur WhatsApp</span>
+</a>
+
+</body>
+</html>

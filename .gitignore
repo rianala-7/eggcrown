@@ -1,0 +1,11 @@
+# Dossier temporaire de photos de comparaison (non lié au site)
+photo-candidates/
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Python
+__pycache__/
+*.pyc
